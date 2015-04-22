@@ -16,7 +16,21 @@ define(['esri/InfoTemplate'], function(InfoTemplate) {
         options: {
           id: 'options',
           opacity: 0.6,
-          visible: true
+          visible: true,
+          infoTemplates: {
+            0: {
+              infoTemplate: new InfoTemplate()
+            },
+            1: {
+              infoTemplate: new InfoTemplate()
+            },
+            2: {
+              infoTemplate: new InfoTemplate()
+            },
+            3: {
+              infoTemplate: new InfoTemplate()
+            }
+          }
         }
       }],
 
@@ -44,9 +58,13 @@ define(['esri/InfoTemplate'], function(InfoTemplate) {
         geocoder: {
           // see https://developers.arcgis.com/javascript/jsapi/geocoder-amd.html#geocoder1
           autoComplete: true,
-          arcgisGeocoder: {
-            placeholder: 'Address or Location'
-          },
+          arcgisGeocoder: false,
+          highlightLocation: true,
+          geocoders: [{
+            url: 'http://sjcgis.org/arcgis/rest/services/Tools/Polaris_Geolocator/GeocodeServer',
+            name: 'SJC Geocoder',
+            singleLineFieldName: 'SingleLine'
+          }],
           'class': 'geocoder'
         }
       }
