@@ -30,6 +30,7 @@
     "dgrid": "0.3.17",
     "put-selector": "0.3.6",
     "xstyle": "0.1.3",
-    "spinjs": "2.0.1"
+    "spinjs": "2.0.1",
+    "bootswatch": "~3.3.4+1"
   }
 }

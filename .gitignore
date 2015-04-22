@@ -13,3 +13,6 @@ src/dojo-bootstrap
 src/spinjs
 dist
 .grunt
+/src/bootstrap/
+/src/bootswatch/
+/src/jquery/

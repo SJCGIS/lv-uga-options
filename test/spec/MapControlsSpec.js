@@ -24,28 +24,10 @@ define([
           zoom: 15
         },
         operationalLayers: [{
-          url: 'http://fake.com/arcgis/rest/services/FeatureLayer/0',
+          url: 'http://fake.com/arcgis/rest/services/Something/MapServer',
           options: {
             id: 'opLayer1',
             visible: true
-          }
-        }, {
-          url: 'http://fake.com/arcgis/rest/services/FeatureLayer/1',
-          options: {
-            id: 'opLayer2',
-            visible: false
-          }
-        }, {
-          url: 'http://fake.com/arcgis/rest/services/FeatureLayer/2',
-          options: {
-            id: 'opLayer3',
-            visible: false
-          }
-        }, {
-          url: 'http://fake.com/arcgis/rest/services/FeatureLayer/3',
-          options: {
-            id: 'opLayer4',
-            visible: false
           }
         }]
       };
@@ -65,28 +47,22 @@ define([
 
     describe('map initialization',function() {
       it('should have layers with given ids', function() {
-        var layerIds = widget.map.graphicsLayerIds;
-        expect(layerIds).to.include.members(['opLayer1', 'opLayer2', 'opLayer3', 'opLayer4']);
+        var layerIds = widget.map.layerIds;
+        expect(layerIds).to.include('opLayer1');
       });
     });
 
     describe('switching layers', function() {
       it('should turn on the layer with the id given', function() {
-        widget.switchLayers('opLayer2');
-        var layer = widget.map.getLayer('opLayer2');
-        expect(layer.visible).to.be.true;
+        widget.switchLayers('option2');
+        var layer = widget.map.getLayer('opLayer1');
+        expect(layer.visibleLayers).to.eql([1]);
       });
 
       it('should turn off all other layers', function() {
-        var disabledLayers = [];
-        widget.switchLayers('opLayer4');
-        array.forEach(widget.map.graphicsLayerIds, lang.hitch(widget, function(lyr) {
-          var layer = widget.map.getLayer(lyr);
-          if(!layer.visible) {
-            disabledLayers.push(lyr);
-          }
-        }));
-        expect(disabledLayers).to.include.members(['opLayer1','opLayer2', 'opLayer3']);
+        widget.switchLayers('option4');
+        var layer = widget.map.getLayer('opLayer1');
+        expect(layer.visibleLayers).to.not.include.any([0,1,2]);
       });
     });
   });

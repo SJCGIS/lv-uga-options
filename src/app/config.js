@@ -11,48 +11,12 @@ define(['esri/InfoTemplate'], function(InfoTemplate) {
       },
 
       operationalLayers: [{
-        url: 'http://sjcgis.org/arcgis/rest/services/LandUse/Lopez_Village_UGA_Options/MapServer/0',
-        title: 'Option 1',
+        url: 'http://sjcgis.org/arcgis/rest/services/LandUse/Lopez_Village_UGA_Options/MapServer',
+        title: 'Lopez Village Options',
         options: {
-          id: 'option1',
+          id: 'options',
           opacity: 0.6,
-          visible: true,
-          outFields: ['*'],
-          infoTemplate: new InfoTemplate('Atrributes', '${*}'),
-          mode: 0
-        }
-      }, {
-        url: 'http://sjcgis.org/arcgis/rest/services/LandUse/Lopez_Village_UGA_Options/MapServer/1',
-        title: 'Option 2',
-        options: {
-          id: 'option2',
-          opacity: 0.6,
-          visible: false,
-          outFields: ['*'],
-          infoTemplate: new InfoTemplate('Atrributes', '${*}'),
-          mode: 0
-        }
-      }, {
-        url: 'http://sjcgis.org/arcgis/rest/services/LandUse/Lopez_Village_UGA_Options/MapServer/2',
-        title: 'Option 3',
-        options: {
-          id: 'option3',
-          opacity: 0.6,
-          visible: false,
-          outFields: ['*'],
-          infoTemplate: new InfoTemplate('Atrributes', '${*}'),
-          mode: 0
-        }
-      }, {
-        url: 'http://sjcgis.org/arcgis/rest/services/LandUse/Lopez_Village_UGA_Options/MapServer/3',
-        title: 'Option 4',
-        options: {
-          id: 'option4',
-          opacity: 0.6,
-          visible: false,
-          outFields: ['*'],
-          infoTemplate: new InfoTemplate('Atrributes', '${*}'),
-          mode: 0
+          visible: true
         }
       }],
 

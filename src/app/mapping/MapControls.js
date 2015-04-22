@@ -10,7 +10,7 @@ define([
 
   'esri/map',
   'esri/dijit/Scalebar',
-  'esri/layers/FeatureLayer',
+  'esri/layers/ArcGISDynamicMapServiceLayer',
   'esri/dijit/HomeButton',
   'esri/dijit/LocateButton',
   'esri/dijit/Geocoder',
@@ -25,8 +25,8 @@ define([
 ], function(
   declare, array, lang, domClass, topic,
   _WidgetBase, _TemplatedMixin,
-  Map, Scalebar, FeatureLayer, HomeButton, LocateButton, Geocoder, arcgisUtils, Legend,
-  BootstrapMap, Spinner,
+  Map, Scalebar, AGSDynamicMapServiceLayer, HomeButton, LocateButton, Geocoder,
+  arcgisUtils, Legend, BootstrapMap, Spinner,
   template) {
   return declare([_WidgetBase, _TemplatedMixin], {
     templateString: template,
@@ -120,7 +120,7 @@ define([
 
       console.log('app.mapping.MapControls::_initLayer', arguments);
 
-      var l = new FeatureLayer(operationalLayer.url, operationalLayer.options);
+      var l = new AGSDynamicMapServiceLayer(operationalLayer.url, operationalLayer.options);
       // unshift instead of push to keep layer ordering on map intact
       layers.unshift(l);
       layerInfos.unshift({
@@ -213,15 +213,27 @@ define([
 
       console.log('app.mapping.MapControls::switchLayers', arguments);
 
-      array.forEach(this.operationalLayers, lang.hitch(this, function(opLayerId) {
-        var layer = this.map.getLayer(opLayerId.options.id);
-        if (layer.id === layerId) {
-          layer.setVisibility(true);
-        } else {
-          layer.setVisibility(false);
-        }
-      }));
+      var layer = this.map.getLayer(this.operationalLayers[0].options.id);
+      var layerIds = [];
 
+      switch(layerId) {
+      case 'option1':
+        layerIds.push(0);
+        break;
+      case 'option2':
+        layerIds.push(1);
+        break;
+      case 'option3':
+        layerIds.push(2);
+        break;
+      case 'option4':
+        layerIds.push(3);
+        break;
+      }
+      layer.setVisibleLayers(layerIds);
+      if(this.legend) {
+        this.legend.refresh();
+      }
     }
   });
 });
