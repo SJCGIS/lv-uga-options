@@ -43,8 +43,9 @@ var profile = {
     'dojox',
     'esri',
     'put-selector',
-    'xstyle', 
-    'dojo-bootstrap', 
+    'xstyle',
+    'dojo-bootstrap',
+    'bootswatch',
     {
       name: 'spin-js',
       location: 'spinjs',
@@ -65,8 +66,7 @@ var profile = {
   stripConsole: 'all',
 
   // The default selector engine is not included by default in a dojo.js build in order to make mobile builds
-  // smaller. We add it back here to avoid that extra HTTP request. There is also an "acme" selector available; if
-  // you use that, you will need to set the `selectorEngine` property in index.html, too.
+  // smaller. We add it back here to avoid that extra HTTP request. There is also an "acme" selector available; ifv // you use that, you will need to set the `selectorEngine` property in index.html, too.
   selectorEngine: 'lite',
 
   // Any module in an application can be converted into a "layer" module, which consists of the original module +
@@ -89,11 +89,10 @@ var profile = {
         'dojox/gfx/path',
         'dojox/gfx/svg',
         'dojox/gfx/shape',
-        'esri/dijit/Attribution',
+        'esri/dijit/Attribution'
 
         // be sure to include the layer types used in your web map
         // otherwise they will be requested asyncronously
-        'esri/layers/FeatureLayer'
       ],
       includeLocales: ['en-us']
     }//,
