@@ -1,6 +1,6 @@
 {
     "name": "lv-uga-options",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "A simple web application showing the proposed options for land use in the Lopez Village UGA.",
     "main": "gruntfile.js",
     "directories": {

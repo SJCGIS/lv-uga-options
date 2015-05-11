@@ -226,9 +226,6 @@ define([
       case 'option3':
         layerIds.push(2);
         break;
-      case 'option4':
-        layerIds.push(3);
-        break;
       }
       layer.setVisibleLayers(layerIds);
       if(this.legend) {

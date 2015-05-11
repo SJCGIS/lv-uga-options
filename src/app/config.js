@@ -26,9 +26,6 @@ define(['esri/InfoTemplate'], function(InfoTemplate) {
             },
             2: {
               infoTemplate: new InfoTemplate()
-            },
-            3: {
-              infoTemplate: new InfoTemplate()
             }
           }
         }
